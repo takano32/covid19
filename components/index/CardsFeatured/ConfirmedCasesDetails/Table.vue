@@ -1,135 +1,109 @@
 <template>
   <ul :class="$style.container">
-    <li :class="[$style.box, $style.parent]">
+    <li :class="[$style.box]">
       <div :class="$style.content">
         <span> {{ $t('陽性者数') }} ({{ $t('累計') }}) </span>
         <span>
-          <strong>{{ 陽性者数.toLocaleString() }}</strong>
+          <strong>{{ items['陽性者数累計']?.toLocaleString() }}</strong>
+          <span :class="$style.unit">{{ $t('人') }}</span>
+        </span>
+      </div>
+    </li>
+    <li :class="[$style.box, $style.parent, $style.space]">
+      <div :class="$style.content">
+        <span>{{ $t('入院') }}</span>
+        <span>
+          <strong>{{ items['入院中']?.toLocaleString() }}</strong>
           <span :class="$style.unit">{{ $t('人') }}</span>
         </span>
       </div>
       <ul :class="$style.group">
         <li :class="[$style.box, $style.parent]">
           <div :class="$style.content">
-            <span>{{ $t('入院') }}</span>
+            <!-- eslint-disable vue/no-v-html-->
+            <span v-html="$t('軽症・中等症')" />
+            <!-- eslint-enable vue/no-v-html-->
             <span>
-              <strong>{{ 入院中.toLocaleString() }}</strong>
+              <strong>{{ items['軽症・中等症']?.toLocaleString() }}</strong>
               <span :class="$style.unit">{{ $t('人') }}</span>
             </span>
           </div>
           <ul :class="$style.group">
             <li :class="[$style.box]">
               <div :class="$style.content">
-                <!-- eslint-disable vue/no-v-html-->
-                <span v-html="$t('軽症・中等症')" />
-                <!-- eslint-enable vue/no-v-html-->
+                <span>{{ $t('即応病床') }}</span>
                 <span>
-                  <strong>{{ 軽症中等症.toLocaleString() }}</strong>
-                  <span :class="$style.unit">{{ $t('人') }}</span>
-                </span>
-              </div>
-            </li>
-            <li :class="[$style.box]">
-              <div :class="$style.content">
-                <span>{{ $t('重症') }}</span>
-                <span>
-                  <strong>{{ 重症.toLocaleString() }}</strong>
-                  <span :class="$style.unit">{{ $t('人') }}</span>
+                  <strong>{{ items['確保病床']?.toLocaleString() }}</strong>
+                  <span :class="$style.unit">{{ $t('床') }}</span>
                 </span>
               </div>
             </li>
           </ul>
         </li>
-        <li :class="[$style.box]">
+        <li :class="[$style.box, $style.parent]">
           <div :class="$style.content">
-            <span>{{ $t('宿泊療養') }}</span>
+            <span>{{ $t('重症') }}</span>
             <span>
-              <strong>{{ 宿泊療養.toLocaleString() }}</strong>
+              <strong>{{ items['重症']?.toLocaleString() }}</strong>
               <span :class="$style.unit">{{ $t('人') }}</span>
             </span>
           </div>
+          <ul :class="$style.group">
+            <li :class="[$style.box]">
+              <div :class="$style.content">
+                <span>{{ $t('即応病床') }}</span>
+                <span>
+                  <strong>{{ items['確保病床重症']?.toLocaleString() }}</strong>
+                  <span :class="$style.unit">{{ $t('床') }}</span>
+                </span>
+              </div>
+            </li>
+          </ul>
         </li>
+      </ul>
+    </li>
+    <li :class="[$style.box, $style.parent]">
+      <div :class="$style.content">
+        <span> {{ $t('宿泊療養') }} </span>
+        <span>
+          <strong>{{ items['宿泊療養']?.toLocaleString() }}</strong>
+          <span :class="$style.unit">{{ $t('人') }}</span>
+        </span>
+      </div>
+      <ul :class="$style.group">
         <li :class="[$style.box]">
           <div :class="$style.content">
-            <span>{{ $t('自宅療養') }}</span>
+            <span>{{ $t('宿泊療養施設 受入可能室数') }}</span>
             <span>
-              <strong>{{ 自宅療養.toLocaleString() }}</strong>
-              <span :class="$style.unit">{{ $t('人') }}</span>
-            </span>
-          </div>
-        </li>
-        <li :class="[$style.box]">
-          <div :class="$style.content">
-            <span>{{ $t('入院・療養等調整中') }}</span>
-            <span>
-              <strong>{{ 調査中.toLocaleString() }}</strong>
-              <span :class="$style.unit">{{ $t('人') }}</span>
-            </span>
-          </div>
-        </li>
-        <li :class="[$style.box]">
-          <div :class="$style.content">
-            <span>{{ $t('死亡') }}</span>
-            <span>
-              <strong>{{ 死亡.toLocaleString() }}</strong>
-              <span :class="$style.unit">{{ $t('人') }}</span>
-            </span>
-          </div>
-        </li>
-        <li :class="[$style.box]">
-          <div :class="$style.content">
-            <span>{{ $t('退院等（療養期間経過を含む）') }}</span>
-            <span>
-              <strong>{{ 退院.toLocaleString() }}</strong>
-              <span :class="$style.unit">{{ $t('人') }}</span>
+              <strong>{{ items['受入可能室数']?.toLocaleString() }}</strong>
+              <span :class="$style.unit">{{ $t('室') }}</span>
             </span>
           </div>
         </li>
       </ul>
     </li>
+    <li :class="[$style.box]">
+      <div :class="[$style.content, $style.space]">
+        <span> {{ $t('死亡者数') }} ({{ $t('累計') }}) </span>
+        <span>
+          <strong>{{ items['死亡']?.toLocaleString() }}</strong>
+          <span :class="$style.unit">{{ $t('人') }}</span>
+        </span>
+      </div>
+    </li>
   </ul>
 </template>
 
 <script lang="ts">
+import type { PropType } from 'vue'
 import Vue from 'vue'
 
-/* eslint-disable vue/prop-name-casing */
+import { Data as IPositiveStatusSummaryData } from '@/libraries/auto_generated/data_converter/convertPositiveStatusSummary'
+
 export default Vue.extend({
   props: {
-    陽性者数: {
-      type: Number,
-      required: true,
-    },
-    入院中: {
-      type: Number,
-      required: true,
-    },
-    軽症中等症: {
-      type: Number,
-      required: true,
-    },
-    重症: {
-      type: Number,
-      required: true,
-    },
-    宿泊療養: {
-      type: Number,
-      required: true,
-    },
-    自宅療養: {
-      type: Number,
-      required: true,
-    },
-    調査中: {
-      type: Number,
-      required: true,
-    },
-    死亡: {
-      type: Number,
-      required: true,
-    },
-    退院: {
-      type: Number,
+    items: {
+      type: Object as PropType<IPositiveStatusSummaryData>,
       required: true,
     },
   },
@@ -151,6 +125,7 @@ $default-boxdiff: 35px;
   * {
     box-sizing: border-box;
   }
+
   // override default styles
   padding-left: 0 !important;
 
@@ -188,6 +163,7 @@ $default-boxdiff: 35px;
     &:last-child {
       margin-left: 10px;
       text-align: right;
+
       // white-space: nowrap;
       flex-shrink: 1;
     }
@@ -203,6 +179,10 @@ $default-boxdiff: 35px;
 
   span.unit {
     @include font-size(14);
+  }
+
+  &.space {
+    margin-top: 18px;
   }
 }
 
@@ -233,6 +213,10 @@ $default-boxdiff: 35px;
       border-left: none;
       border-bottom: none;
     }
+  }
+
+  &.space {
+    margin-top: 18px;
   }
 }
 

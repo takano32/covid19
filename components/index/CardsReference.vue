@@ -6,7 +6,6 @@
 </template>
 
 <script lang="ts">
-/* eslint-disable simple-import-sort/imports -- ブラウザでの表示順に合わせて各 card の component を import する */
 import Vue from 'vue'
 
 import CardsLazyRow from '@/components/index/_shared/CardsLazyRow.vue'
@@ -44,6 +43,9 @@ const MetroCard = () =>
 // 都庁来庁者数の推移
 const AgencyCard = () =>
   import('@/components/index/CardsReference/Agency/Card.vue')
+// 新規陽性者における接触歴等不明者数
+const UntrackedRateCard = () =>
+  import('@/components/index/CardsReference/UntrackedRate/Card.vue')
 // 受診相談窓口における相談件数
 const MonitoringConsultationDeskReportsNumberCard = () =>
   import(
@@ -58,12 +60,15 @@ export default Vue.extend({
   data() {
     return {
       rows: [
-        [ConfirmedCasesAttributesCard, ConfirmedCasesByMunicipalitiesCard],
-        [PositiveNumberByDevelopedDateCard, PositiveNumberByDiagnosedDateCard],
         [PositiveNumberOver65Card, DeathsByDeathDateCard],
         [MetroCard, AgencyCard],
       ],
-      hideRows: [[VariantCard, MonitoringConsultationDeskReportsNumberCard]],
+      hideRows: [
+        [UntrackedRateCard, ConfirmedCasesAttributesCard],
+        [ConfirmedCasesByMunicipalitiesCard, PositiveNumberByDevelopedDateCard],
+        [PositiveNumberByDiagnosedDateCard, VariantCard],
+        [MonitoringConsultationDeskReportsNumberCard],
+      ],
     }
   },
 })

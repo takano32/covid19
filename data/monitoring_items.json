@@ -1,41 +1,30 @@
 {
-    "date": "2022\/8\/9 20:45",
+    "date": "2023\/5\/2 16:45",
     "data": {
         "専門家3行コメント": [
             {
-                "@ja": "新規陽性者数の7日間平均は、過去最多となり、これまでに経験したことのない爆発的な感染状況が続いている。誰もが、いつどこで感染してもおかしくない状況であり、自ら身を守る行動を徹底する必要がある。",
-                "@en": "The 7-day average of new positive cases is at the highest level ever, and an explosive rise in infections continues. It is possible for anyone to become infected regardless of the time or place. Therefore, it is necessary to firmly take action to protect yourself."
+                "@ja": "感染状況に関する各指標から、当面は感染拡大が続く可能性が高いと思われる。感染症法上の5類への移行後も、換気の励行、場面に応じたマスクの着用などの、基本的な感染防止対策を継続する必要がある。\n",
+                "@en": "Various indicators related to the infection situation suggest a high possibility that the spread of infection will continue for some time. It is necessary to continue taking basic precautions to prevent the spread of infection, including ventilating rooms on a regular basis and wearing masks as appropriate for the situation, even after COVID-19 is downgraded to a class 5 infectious disease under the Infectious Disease Act."
             },
             {
-                "@ja": "入院患者数及び重症患者数が増加している。陽性患者の受入れには多くの人手、労力と時間が必要である上に、医療従事者の就業制限により、人員不足となっており、医療機関への負荷が増大し続けている。",
-                "@en": "The number of hospitalized patients is rising, as is the number of severe cases. Accepting COVID-19 patients requires a lot of manpower, effort, and time. However, staff shortages are occurring due to infection or exposure to the virus, and the burden on health care institutions continues to grow."
+                "@ja": "入院患者数は増加傾向にあるが、現時点では、通常医療との両立が可能な状況である。5類への移行に向けて、都民が安心して医療を受けられるよう、幅広い医療機関が診療できる体制を構築する必要がある。\n",
+                "@en": "Although the number of hospitalized patients is on an increasing trend, a balance with non-COVID healthcare is possible at this time. In preparation for downgrading COVID-19 to a class 5 infectious disease, systems must be established to enable the people of Tokyo to receive care with peace of mind at a range of medical institutions."
             }
         ],
-        "(1)新規陽性者数": 30904,
-        "(2)#7119（東京消防庁救急相談センター）における発熱等相談件数 ": 207.9,
-        "(3)新規陽性者における接触歴等不明者（人数）": 23394.3,
-        "(3)新規陽性者における接触歴等不明者（増加比）": 96.5,
-        "(4)PCR・抗原検査（陽性率）": 51,
-        "(4)PCR・抗原検査（検査人数）": 27500.6,
-        "(5)救急医療の東京ルールの適用件数": 271.6,
-        "(6)入院患者数": 4304,
-        "(6)入院患者確保病床数": 6752,
-        "(7)重症患者数": 40,
-        "(7)重症患者確保病床数": 297,
         "総括コメント-感染状況": {
-            "date": "2022-08-03",
-            "level": 4,
+            "date": "2023-04-26",
+            "level": 2,
             "display": {
-                "@ja": "大規模な感染拡大が継続している",
-                "@en": "Extensive spread of the virus continues. "
+                "@ja": "感染状況の推移に注意が必要である",
+                "@en": "Infection trends need to be closely observed."
             }
         },
         "総括コメント-医療提供体制": {
-            "date": "2022-08-03",
-            "level": 4,
+            "date": "2023-04-26",
+            "level": 2,
             "display": {
-                "@ja": "医療体制がひっ迫している",
-                "@en": "The health care delivery system is under strain."
+                "@ja": "通常の医療との両立が可能な状況である",
+                "@en": "A balance between the provision of COVID and non-COVID health care is possible. "
             }
         }
     }
